@@ -2,6 +2,10 @@ name: Validate
 on:
   push:
   pull_request:
+  # The release workflow starts the checks for the pull request that updates
+  # the manifest version, because pushes and pull requests made with the
+  # workflow token do not trigger workflows.
+  workflow_dispatch:
 jobs:
   tests:
     runs-on: ubuntu-latest

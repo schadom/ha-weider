@@ -24,3 +24,41 @@ jobs:
         with:
           files: weider.zip
 
+
+  # Bring the version in the repository's manifest in line with the release,
+  # through a pull request because main requires one.
+  sync-manifest-version:
+    needs: release
+    if: ${{ !github.event.release.prerelease }}
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Open a pull request with the release version
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          version="${TAG#v}"
+          manifest=custom_components/weider/manifest.json
+          if grep -qF "\"version\": \"$version\"" "$manifest"; then
+            echo "The manifest already has version $version."
+            exit 0
+          fi
+          branch="release/manifest-version-$version"
+          jq --arg version "$version" '.version = $version' "$manifest" > manifest.tmp
+          mv manifest.tmp "$manifest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git commit -am "Set the manifest version to $version"
+          git push origin "$branch"
+          gh pr create --base main --head "$branch" \
+            --title "Set the manifest version to $version" \
+            --body "Release $TAG is published. This sets the version in the repository's manifest to $version, so installs from the repository show the released version."
+          gh workflow run validate.yml --ref "$branch"
