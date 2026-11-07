@@ -8,10 +8,10 @@
   "dependencies": [
     "modbus"
   ],
-  "documentation": "https://github.com/schadom/hacs_weider",
+  "documentation": "https://github.com/schadom/ha-weider",
   "integration_type": "device",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/schadom/hacs_weider/issues",
+  "issue_tracker": "https://github.com/schadom/ha-weider/issues",
   "loggers": [
     "modbus_connection",
     "tmodbus",
@@ -20,5 +20,5 @@
   "requirements": [
     "weider-modbus==0.3.0"
   ],
-  "version": "0.1.0"
+  "version": "1.6.1"
 }
