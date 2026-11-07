@@ -30,7 +30,7 @@ installs automatically.
 
 ## Installation with HACS
 
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=schadom&repository=hacs_weider&category=integration)
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=schadom&repository=ha-weider&category=integration)
 
 1. Add this repository as a custom repository of category **Integration**.
 2. Install **Weider** and restart Home Assistant.
@@ -230,7 +230,7 @@ values.
   a connection to the manufacturer's cloud service. Whenever that connection ends,
   which happens roughly every 64 minutes, the board restarts its network and drops
   the Modbus TCP connection as well
-  ([#24](https://github.com/schadom/hacs_weider/issues/24)). The integration
+  ([#24](https://github.com/schadom/ha-weider/issues/24)). The integration
   reconnects on its own and keeps the last values, so entities stay available.
   Home Assistant still logs each reset as an error:
 
@@ -281,12 +281,12 @@ values.
       weider_modbus: debug
   ```
 
-[hacs_weider]: https://github.com/schadom/hacs_weider
-[commits-shield]: https://img.shields.io/github/commit-activity/y/schadom/hacs_weider.svg?style=for-the-badge
-[commits]: https://github.com/schadom/hacs_weider/commits/master
+[ha-weider]: https://github.com/schadom/ha-weider
+[commits-shield]: https://img.shields.io/github/commit-activity/y/schadom/ha-weider.svg?style=for-the-badge
+[commits]: https://github.com/schadom/ha-weider/commits/main
 [hacs]: https://github.com/hacs/integration
 [hacsbadge]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge
-[license-shield]: https://img.shields.io/github/license/schadom/hacs_weider.svg?style=for-the-badge
-[demo]: https://raw.githubusercontent.com/schadom/hacs_weider/refs/heads/main/demo.png
-[releases-shield]: https://img.shields.io/github/release/schadom/hacs_weider.svg?style=for-the-badge
-[releases]: https://github.com/schadom/hacs_weider/releases
+[license-shield]: https://img.shields.io/github/license/schadom/ha-weider.svg?style=for-the-badge
+[demo]: https://raw.githubusercontent.com/schadom/ha-weider/refs/heads/main/demo.png
+[releases-shield]: https://img.shields.io/github/release/schadom/ha-weider.svg?style=for-the-badge
+[releases]: https://github.com/schadom/ha-weider/releases
